@@ -22,3 +22,5 @@ jobs:
     - uses: Azure/container-scan@v0
       with:
         image-name: vickybytes.azurecr.io/myapp:${{ github.sha }}
+        severity-threshold: CRITICAL
+        run-quality-checks: true  
