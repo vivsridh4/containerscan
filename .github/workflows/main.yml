@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - run: |
-        cd myexpressapp
+        cd containerscan
         docker build . -t vickybytes.azurecr.io/myexpressapp:${{ github.sha }}
   
     - uses: Azure/container-scan@v0
