@@ -17,7 +17,7 @@ jobs:
 
     - run: |
         cd containerscan
-        docker build . -t vickybytes.azurecr.io/myexpressapp:${{ github.sha }}
+        docker build . -t vickybytes.azurecr.io/myapp:${{ github.sha }}
   
     - uses: Azure/container-scan@v0
       with:
