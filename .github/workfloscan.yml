@@ -1,0 +1,24 @@
+name: Linux Container Node Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: vickybytes.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    - run: |
+        cd myexpressapp
+        docker build . -t vickybytes.azurecr.io/myexpressapp:${{ github.sha }}
+  
+    - uses: Azure/container-scan@v0
+      with:
+        image-name: vickybytes.azurecr.io/myapp:${{ github.sha }}
